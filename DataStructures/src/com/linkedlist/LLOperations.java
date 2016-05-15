@@ -15,7 +15,10 @@ public class LLOperations {
 		head = new Node(null);
 	}
 
-	// below add() is used to insert node at the end of the LList
+	/*
+	 * below add() is used to insert node at the end of the LList, nothing but
+	 * an append operation
+	 */
 	public void add(int data) {
 		Node temp = new Node(data, null);
 		Node current = head;
@@ -78,6 +81,35 @@ public class LLOperations {
 			}
 			return found;
 		}
+	}
+
+	/*
+	 * below lookupPos() is used to search for a key value in LList and return
+	 * node position
+	 */
+
+	public int lookupPos(int key) {
+		boolean found = false;
+		Node llist = new Node(null);
+		llist = head.getNext();
+		int i = 0, pos = 777;
+		// condition to check if LList is empty or not
+
+		while (llist.getNext() != null) {
+			// condition to check if node contains key value
+			if (llist.getData() == key) {
+				pos = i;
+				return pos;
+			}
+			i++;
+			llist = llist.getNext();
+		}
+		// condition to check if key is found in the last node
+		if (llist.getData() == key) {
+			found = true;
+			pos=i;
+			return pos;
+		}else return pos;
 	}
 
 	// printLL() is used to traverse and print the nodes ini LList

@@ -89,7 +89,6 @@ public class LLOperations {
 	 */
 
 	public int lookupPos(int key) {
-		boolean found = false;
 		Node llist = new Node(null);
 		llist = head.getNext();
 		int i = 0, pos = 777;
@@ -106,10 +105,10 @@ public class LLOperations {
 		}
 		// condition to check if key is found in the last node
 		if (llist.getData() == key) {
-			found = true;
-			pos=i;
+			pos = i;
 			return pos;
-		}else return pos;
+		} else
+			return pos;
 	}
 
 	// printLL() is used to traverse and print the nodes ini LList
@@ -124,4 +123,37 @@ public class LLOperations {
 		System.out.println(ll.getData());
 	}
 
+	public void removeHead(Node ll) {
+		Node temp=head;
+		head=head.next;
+		temp=null;
+	}
+
+	/*
+	 * remove() is used to remove the nodes with the key value
+	 */
+	public void remove(int key) {
+
+		Node ll = new Node(null);
+		ll = head.getNext();
+		Node previous = new Node(null);
+		if (ll.getData() == key) {
+			removeHead(ll);
+		}
+		while (ll.getNext() != null) {
+
+			if (ll.getData() == key) {
+				previous.setNext(ll.getNext());
+			}
+			previous = ll;
+			ll = ll.getNext();
+		}
+		if (ll.getData() == key) {
+			previous.setNext(null);
+		}
+	}
+//	
+//	public void removeTail(Node ll){
+//		
+//	}
 }

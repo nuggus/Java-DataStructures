@@ -28,6 +28,8 @@ public class LList {
 		} else {
 			System.out.println("Element not found in Linked List");
 		}
+		list.remove(99);
+		list.printLL();
 	}
 
 }

@@ -10,11 +10,12 @@ package com.linkedlist;
 public class LLOperations {
 	Node head;
 
+	// constructor
 	public LLOperations() {
 		head = new Node(null);
 	}
 
-	// below add method is used to insert node at the end of the LList
+	// below add() is used to insert node at the end of the LList
 	public void add(int data) {
 		Node temp = new Node(data, null);
 		Node current = head;
@@ -51,14 +52,42 @@ public class LLOperations {
 		current.setNext(temp);
 	}
 
+	/*
+	 * below lookup() is used to search for a key value in LList and return
+	 * boolean value
+	 */
+
+	public boolean lookup(int key) {
+		boolean found = false;
+		Node llist = new Node(null);
+		llist = head.getNext();
+		// condition to check if LList is empty or not
+		if (llist == null) {
+			return found;
+		} else {
+			while (llist.getNext() != null) {
+				// condition to check if node contains key value
+				if (llist.getData() == key) {
+					found = true;
+				}
+				llist = llist.getNext();
+			}
+			// condition to check if key is found in the last node
+			if (llist.getData() == key) {
+				found = true;
+			}
+			return found;
+		}
+	}
+
+	// printLL() is used to traverse and print the nodes ini LList
 	public void printLL() {
 		Node ll = new Node(null);
 		// System.out.print(head.getData());
 		ll = head.getNext();
-		while (ll.next != null) {
+		while (ll.getNext() != null) {
 			System.out.print(ll.getData());
 			ll = ll.getNext();
-
 		}
 		System.out.println(ll.getData());
 	}

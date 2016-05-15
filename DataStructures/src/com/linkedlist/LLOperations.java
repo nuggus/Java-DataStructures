@@ -17,7 +17,7 @@ public class LLOperations {
 	public void add(int data, int position) {
 		Node temp = new Node(data,null);
 		Node current = head;
-		for (int i = 1; i < position && current.getNext() != null; i++) {
+		for (int i = 0; i < position && current.getNext() != null; i++) {
 			current = current.getNext();// traversing to next node
 		}
 		/*

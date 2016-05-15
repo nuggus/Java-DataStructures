@@ -20,6 +20,8 @@ public class LList {
 		list.add(4, 3);
 		list.add(13, 0);
 		list.add(12, 1);
+		list.add(12, 1);
+		list.add(99);
 		list.add(99);// adding at tail
 		list.printLL();
 		int position = list.lookupPos(99);

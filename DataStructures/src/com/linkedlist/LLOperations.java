@@ -144,16 +144,18 @@ public class LLOperations {
 
 			if (ll.getData() == key) {
 				previous.setNext(ll.getNext());
-			}
+				ll=previous.getNext();
+			}else{
 			previous = ll;
 			ll = ll.getNext();
+			}
 		}
 		if (ll.getData() == key) {
 			previous.setNext(null);
 		}
 	}
-//	
-//	public void removeTail(Node ll){
-//		
-//	}
+	
+	public void removeTail(Node ll){
+		
+	}
 }

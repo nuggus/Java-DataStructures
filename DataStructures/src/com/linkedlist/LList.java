@@ -32,10 +32,18 @@ public class LList {
 			System.out.println("Element not found in Linked List");
 		}
 		list.add(13,0);
+//		list.add(77);
 		list.remove(13);
 		list.remove(12);
 		list.printLL();
 		System.out.println(list.lookup(4));
+		list.replaceNodeValue(99, 100);
+		list.add(77);
+		list.add(77);
+		list.add(77);
+		list.printLL();
+		list.interChangeSimultaneousNodes();
+		//list.printLL();
 	}
 
 }

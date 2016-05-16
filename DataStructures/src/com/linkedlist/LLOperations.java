@@ -3,6 +3,8 @@
  */
 package com.linkedlist;
 
+import com.sun.java.swing.plaf.windows.WindowsInternalFrameTitlePane.ScalableIconUIResource;
+
 /**
  * @author nuggu
  *
@@ -137,36 +139,98 @@ public class LLOperations {
 
 	/*
 	 * remove() is used to remove the nodes with the key value
-	 * 
+	 * STEP1: CREATE ll and assign head to it, create a boolean flag and previous node
+	 * STEP2: check if the node to be removed is head node and remove head if it is matched and 
+	 * also recursively check if after removal of head new head node also contains same node value 
+	 * or not if so continue removal of head.
+	 * STEP3: check if the node to be removed is internal node by traversing each node and compare with key, 
+	 * if so then use previous node and set previous node's next link as current node's next link
+	 * STEP4: check if the node is the tail node to be removed and assign previous node's next link to null
 	 */
 	public void remove(int key) {
-
-		Node ll = new Node(null);
-		ll = head.getNext();
+		// STEP1:
+		Node current = new Node(null);
+		current = head.getNext();
 		Node previous = new Node(null);
 		boolean flag = true;
+		// STEP2:
 		while (flag) {
-			if (ll.getData() == key) {
-				removeHead(ll);
-				ll=ll.getNext();
+			if (current.getData() == key) {
+				removeHead(current);
+				current = current.getNext();
 			} else {
 				flag = false;
 			}
 		}
+		// STEP3:
+		while (current.getNext() != null) {
 
-		while (ll.getNext() != null) {
-
-			if (ll.getData() == key) {
-				previous.setNext(ll.getNext());
-				ll = previous.getNext();
+			if (current.getData() == key) {
+				previous.setNext(current.getNext());
+				current = previous.getNext();
 			} else {
-				previous = ll;
-				ll = ll.getNext();
+				previous = current;
+				current = current.getNext();
 			}
 		}
-		if (ll.getData() == key) {
+		// STEP4:
+		if (current.getData() == key) {
 			previous.setNext(null);
 		}
 	}
+	/*
+	 * llsort() is used to sort the LL in ascending order
+	 */
+	
+	public void llsort(Node current){
+		current=head;
+		while(current.getNext()!=null){
+			
+		}
+		
+		
+	}
+	
+	/*
+	 * replaceNodeValue(int key,int newKey)
+	 */
+	public void replaceNodeValue(int key, int newKey){
+		Node current=new Node(null);
+		current=head;
+		while(current.getNext()!=null){
+			if(current.getData()==key){
+				current.setData(newKey);
+			}
+			current=current.getNext();
+		}
+		if(current.getData()==key){
+			current.setData(newKey);
+		}
+	}
+	
+	public void interChangeSimultaneousNodes() {
+		Node even;
+		Node odd,current;
+		int i=0;
+		LLOperations newList = new LLOperations();
+		current = head.getNext();
+		odd=head.getNext();
+		even=head.getNext().getNext();
+		while (current.getNext() != null) {
+			if(i%2==0){
+				newList.add(even.getData());
+				if(even.getNext()!=null)
+				even=even.getNext().getNext();
+			}else{
+				newList.add(odd.getData());
+				odd=odd.getNext().getNext();
+			}
 
+			current = current.getNext();
+			i++;
+		}
+		newList.add(odd.getData());
+		System.out.println("New List");
+		newList.printLL();
+	}
 }

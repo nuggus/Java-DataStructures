@@ -37,21 +37,26 @@ public class LLOperations {
 
 	/*
 	 * below add() is an overloaded method, used to insert new node at specified
-	 * position
+	 * position in simple language: this method is used to add a node to the
+	 * linked list. For this in:
+	 * STEP1: a temporary node is created with the data to be stored in that node. 
+	 * STEP2: another node (current) pointing to head node is assigned. 
+	 * STEP3: traverse till the position where we need to insert new node. 
+	 * STEP4: now for the temporary node assign its next node as the current node's next node (so that we will cut the connection of the list and assign new link here). 
+	 * STEP5: assign the created temp node as current node's next node and it is done.
 	 */
 	public void add(int data, int position) {
+		// STEP1:
 		Node temp = new Node(data, null);
+		// STEP2:
 		Node current = head;
+		// STEP3:
 		for (int i = 0; i < position && current.getNext() != null; i++) {
 			current = current.getNext();// traversing to next node
 		}
-		/*
-		 * for the new node we are setting its next node as current nodes next
-		 * node
-		 */
-
+		// STEP4:
 		temp.setNext(current.getNext());
-		// now we will add our new node (temp) to the linked list
+		// STEP4:
 		current.setNext(temp);
 	}
 
@@ -111,48 +116,57 @@ public class LLOperations {
 			return pos;
 	}
 
-	// printLL() is used to traverse and print the nodes ini LList
+	// printLL() is used to traverse and print the nodes in LList
 	public void printLL() {
 		Node ll = new Node(null);
-		// System.out.print(head.getData());
 		ll = head.getNext();
 		while (ll.getNext() != null) {
 			System.out.print(ll.getData());
+			System.out.print("->");
 			ll = ll.getNext();
 		}
 		System.out.println(ll.getData());
 	}
 
 	public void removeHead(Node ll) {
-		Node temp=head;
-		head=head.next;
-		temp=null;
+		@SuppressWarnings("unused")
+		Node temp = ll;
+		head = head.getNext();
+		temp = null;
 	}
 
 	/*
 	 * remove() is used to remove the nodes with the key value
+	 * 
 	 */
 	public void remove(int key) {
 
 		Node ll = new Node(null);
 		ll = head.getNext();
 		Node previous = new Node(null);
-		if (ll.getData() == key) {
-			removeHead(ll);
+		boolean flag = true;
+		while (flag) {
+			if (ll.getData() == key) {
+				removeHead(ll);
+				ll=ll.getNext();
+			} else {
+				flag = false;
+			}
 		}
+
 		while (ll.getNext() != null) {
 
 			if (ll.getData() == key) {
 				previous.setNext(ll.getNext());
-				ll=previous.getNext();
-			}else{
-			previous = ll;
-			ll = ll.getNext();
+				ll = previous.getNext();
+			} else {
+				previous = ll;
+				ll = ll.getNext();
 			}
 		}
 		if (ll.getData() == key) {
 			previous.setNext(null);
 		}
 	}
-	
+
 }

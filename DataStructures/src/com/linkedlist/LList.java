@@ -24,15 +24,18 @@ public class LList {
 		list.add(99);
 		list.add(99);// adding at tail
 		list.printLL();
+
 		int position = list.lookupPos(99);
 		if (position != 777) {
 			System.out.println("Element Found at node:" + position + " starting from 0 node");
 		} else {
 			System.out.println("Element not found in Linked List");
 		}
-		list.remove(99);
+		list.add(13,0);
 		list.remove(13);
+		list.remove(12);
 		list.printLL();
+		System.out.println(list.lookup(4));
 	}
 
 }

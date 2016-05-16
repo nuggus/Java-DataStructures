@@ -155,7 +155,4 @@ public class LLOperations {
 		}
 	}
 	
-	public void removeTail(Node ll){
-		
-	}
 }

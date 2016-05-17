@@ -31,8 +31,7 @@ public class LList {
 		} else {
 			System.out.println("Element not found in Linked List");
 		}
-		list.add(13,0);
-//		list.add(77);
+		list.add(13, 0);
 		list.remove(13);
 		list.remove(12);
 		list.printLL();
@@ -43,7 +42,9 @@ public class LList {
 		list.add(77);
 		list.printLL();
 		list.interChangeSimultaneousNodes();
-		//list.printLL();
+		list.printLL();
+		list.removeSpecificNodes(8);
+		list.printLL();
 	}
 
 }

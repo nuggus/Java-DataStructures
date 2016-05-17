@@ -3,8 +3,6 @@
  */
 package com.linkedlist;
 
-import com.sun.java.swing.plaf.windows.WindowsInternalFrameTitlePane.ScalableIconUIResource;
-
 /**
  * @author nuggu
  *
@@ -207,7 +205,9 @@ public class LLOperations {
 			current.setData(newKey);
 		}
 	}
-	
+	/*
+	 * interchange simultaneous nodes 
+	 */
 	public void interChangeSimultaneousNodes() {
 		Node even;
 		Node odd,current;
@@ -231,6 +231,25 @@ public class LLOperations {
 		}
 		newList.add(odd.getData());
 		System.out.println("New List");
-		newList.printLL();
+		head=newList.head;
 	}
+	/*
+	 * remove the nodes which are greater than a specific value
+	 */
+	
+	public void removeSpecificNodes(int key){
+		Node current;
+		current=head.getNext();
+		while(current.getNext()!=null){
+			if(current.getData()>key){
+				remove(current.getData());
+			}
+			current=current.getNext();
+		}
+	}
+	
+	
+	
+	
+	
 }

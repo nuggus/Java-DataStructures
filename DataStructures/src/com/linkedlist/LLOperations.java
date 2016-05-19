@@ -248,7 +248,9 @@ public class LLOperations {
 		}
 	}
 	
-	
+	public void reverseLList(){
+		
+	}
 	
 	
 	
